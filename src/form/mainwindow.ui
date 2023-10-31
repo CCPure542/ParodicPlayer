@@ -6,17 +6,488 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>789</width>
+    <height>571</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ParodicPlayer</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <property name="windowIcon">
+   <iconset resource="../../res.qrc">
+    <normaloff>:/res/icon_play.png</normaloff>:/res/icon_play.png</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGraphicsView" name="graphicsView"/>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_1">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>90</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QSlider" name="slider_progress">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::groove:horizontal{border:1px solid rgb(170, 170, 170);background-color:rgb(170, 170, 170); height:15px;border-radius:5px;}
+QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,radius:0.5,fx:0.5,fy:0.5,stop:0.7 white, stop:0.8 rgb(140,140,140));width:20px;border-radius:10px;margin-top:-5px;margin-bottom:-5px;}
+#horizontalSlider::sub-page:horizontal{background:red;margin:5px;border-radius:5px;}</string>
+            </property>
+            <property name="pageStep">
+             <number>2</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_sound">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Volume&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/res/icon_sound.png</normaloff>:/res/icon_sound.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>200</width>
+              <height>100</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="slider_volume">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::groove:horizontal{border:1px solid rgb(170, 170, 170);background-color:rgb(170, 170, 170); height:15px;border-radius:5px;}
+QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,radius:0.5,fx:0.5,fy:0.5,stop:0.7 white, stop:0.8 rgb(140,140,140));width:20px;border-radius:10px;margin-top:-5px;margin-bottom:-5px;}
+#horizontalSlider::sub-page:horizontal{background:red;margin:5px;border-radius:5px;}</string>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+         <zorder>btn_sound</zorder>
+         <zorder>slider_volume</zorder>
+         <zorder>slider_progress</zorder>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox_0">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="btn_pause">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Play &amp;amp; Pause&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/res/icon_play.png</normaloff>:/res/icon_play.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_stop">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stop&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/res/icon_stop.png</normaloff>:/res/icon_stop.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_pre">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;L: Back, R: Previous&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/res/icon_previous.png</normaloff>:/res/icon_previous.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_next">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;L: Forward, R: Next&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/res/icon_next.png</normaloff>:/res/icon_next.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_open">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open File&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/res/icon_open.png</normaloff>:/res/icon_open.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTimeEdit" name="timeEdit">
+            <property name="cursor">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background:transparent;border-width:0;border-style:outset</string>
+            </property>
+            <property name="wrapping">
+             <bool>true</bool>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="keyboardTracking">
+             <bool>false</bool>
+            </property>
+            <property name="minimumTime">
+             <time>
+              <hour>0</hour>
+              <minute>0</minute>
+              <second>0</second>
+             </time>
+            </property>
+            <property name="displayFormat">
+             <string>hh:mm:ss</string>
+            </property>
+            <property name="time">
+             <time>
+              <hour>0</hour>
+              <minute>0</minute>
+              <second>0</second>
+             </time>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="maximumSize">
+             <size>
+              <width>10</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>/</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTimeEdit" name="timeEdit_2">
+            <property name="styleSheet">
+             <string notr="true">background:transparent;border-width:0;border-style:outset</string>
+            </property>
+            <property name="wrapping">
+             <bool>true</bool>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="keyboardTracking">
+             <bool>false</bool>
+            </property>
+            <property name="displayFormat">
+             <string>hh:mm:ss</string>
+            </property>
+            <property name="time">
+             <time>
+              <hour>0</hour>
+              <minute>0</minute>
+              <second>0</second>
+             </time>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+   <zorder>groupBox_1</zorder>
+   <zorder>graphicsView</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>789</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuP">
+    <property name="title">
+     <string>ParodicPlayer</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Format">
+    <property name="title">
+     <string>(Format)</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_FileName">
+    <property name="title">
+     <string>(FileName)</string>
+    </property>
+   </widget>
+   <addaction name="menuP"/>
+   <addaction name="menu_Format"/>
+   <addaction name="menu_FileName"/>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../res.qrc"/>
+ </resources>
  <connections/>
 </ui>

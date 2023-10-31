@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/icon_open.png</file>
+        <file>res/icon_pause.png</file>
+        <file>res/icon_play.png</file>
+        <file>res/icon_sound.png</file>
+        <file>res/icon_sound_33.png</file>
+        <file>res/icon_sound_66.png</file>
+        <file>res/icon_sound_99.png</file>
+        <file>res/icon_stop.png</file>
+        <file>res/icon_next.png</file>
+        <file>res/icon_previous.png</file>
+    </qresource>
+</RCC>
