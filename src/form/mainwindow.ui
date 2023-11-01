@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>789</width>
-    <height>571</height>
+    <width>500</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,14 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QGroupBox" name="groupBox_1">
@@ -100,7 +107,7 @@
              </size>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
+             <cursorShape>ArrowCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">QSlider::groove:horizontal{border:1px solid rgb(170, 170, 170);background-color:rgb(170, 170, 170); height:15px;border-radius:5px;}
@@ -108,7 +115,10 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
 #horizontalSlider::sub-page:horizontal{background:red;margin:5px;border-radius:5px;}</string>
             </property>
             <property name="pageStep">
-             <number>2</number>
+             <number>0</number>
+            </property>
+            <property name="tracking">
+             <bool>true</bool>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -124,7 +134,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
              </size>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
+             <cursorShape>ArrowCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Volume&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -153,12 +163,15 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
              </size>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
+             <cursorShape>ArrowCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">QSlider::groove:horizontal{border:1px solid rgb(170, 170, 170);background-color:rgb(170, 170, 170); height:15px;border-radius:5px;}
 QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,radius:0.5,fx:0.5,fy:0.5,stop:0.7 white, stop:0.8 rgb(140,140,140));width:20px;border-radius:10px;margin-top:-5px;margin-bottom:-5px;}
 #horizontalSlider::sub-page:horizontal{background:red;margin:5px;border-radius:5px;}</string>
+            </property>
+            <property name="maximum">
+             <number>100</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -210,7 +223,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
              </size>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
+             <cursorShape>ArrowCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Play &amp;amp; Pause&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -239,7 +252,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
              </size>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
+             <cursorShape>ArrowCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stop&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -268,7 +281,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
              </size>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
+             <cursorShape>ArrowCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;L: Back, R: Previous&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -297,7 +310,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
              </size>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
+             <cursorShape>ArrowCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;L: Forward, R: Next&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -326,7 +339,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
              </size>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
+             <cursorShape>ArrowCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open File&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -347,7 +360,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
            </widget>
           </item>
           <item>
-           <widget class="QTimeEdit" name="timeEdit">
+           <widget class="QTimeEdit" name="timeEdit_position">
             <property name="cursor">
              <cursorShape>ArrowCursor</cursorShape>
             </property>
@@ -402,7 +415,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
            </widget>
           </item>
           <item>
-           <widget class="QTimeEdit" name="timeEdit_2">
+           <widget class="QTimeEdit" name="timeEdit_duration">
             <property name="styleSheet">
              <string notr="true">background:transparent;border-width:0;border-style:outset</string>
             </property>
@@ -461,7 +474,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>789</width>
+     <width>500</width>
      <height>21</height>
     </rect>
    </property>
@@ -484,7 +497,6 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
    <addaction name="menu_Format"/>
    <addaction name="menu_FileName"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="../../res.qrc"/>

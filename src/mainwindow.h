@@ -2,6 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QMessageBox>
+
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include <QGraphicsScene>
+#include <QGraphicsVideoItem>
+#include <QVideoWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +23,67 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    /* Public Function */
+
+    // Rewrite Close Event
+    void closeEvent(QCloseEvent *);
+    // set Supporting suffix
+    void setSupportSuffix();
+    // get Supporting suffix
+    QString getSupportSuffix();
+    // get Supporting suffix filter
+    QString getSuffixFilter();
+
 private:
     Ui::MainWindow *ui;
+
+    /* Private Attributes */
+
+    QMediaPlayer * player = nullptr;
+    QAudioOutput * audioOutput = nullptr;
+    QGraphicsVideoItem * videoItem = nullptr;
+    QGraphicsPixmapItem * pixmapItem = nullptr;
+    QGraphicsScene * scene = nullptr;
+    // Suffix supporting
+    QVector<QString> lstSuffix;
+    // Folder Path choosing, default: C:/Users/xxx
+    QString folderPath = QDir::homePath();
+    // Volume setting, default: 10%
+    int currentVolume = 10;
+    bool isMuted = false;
+
+    /* Private Function */
+
+    // Initialize paramters of player and audioOutput
+    void initializePlayer();
+    // Initialize paramters of videoItem
+    void initializeVideoItem();
+    // Initialize paramters of pixmapItem
+    void initializePixmapItem(bool);
+
+    // store all the connect(?) statements
+    void funcConnect();
+    // play video/audio
+    void openAndPlay(QString);
+    // check suffix
+    bool checkSuffix(QString);
+    // setting both default volume and default path when exec program
+    void setDefaultValue();
+    // setting default path only
+    void setFolderPath(QFileInfo);
+
+    /* Private Slots */
+    // store default setting when you close the ParodicPlayer
+    void saveDefaultValue();
+    // set the playback progress
+    void setProgress(qint64);
+    // update the slider's displaying
+    void UpdatePositon(qint64);
+    // set the volume
+    void setVolume(int);
+    // update the volume slider's displaying
+    void UpdatePosVol(int);
+    // set Sound button Icon by the volume
+    void setSoundIcon(float);
 };
 #endif // MAINWINDOW_H
