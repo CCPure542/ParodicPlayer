@@ -12,5 +12,8 @@
         <file>res/icon_previous.png</file>
         <file>res/logo.png</file>
         <file>res/audioplay.png</file>
+        <file>res/icon_list.png</file>
+        <file>res/icon_opendir.png</file>
+        <file>res/icon_speed.png</file>
     </qresource>
 </RCC>

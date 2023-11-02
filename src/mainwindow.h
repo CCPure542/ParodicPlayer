@@ -4,12 +4,14 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QScreen>
 
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include <QGraphicsScene>
 #include <QGraphicsVideoItem>
-#include <QVideoWidget>
+
+#include "validsuffix.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,12 +29,8 @@ public:
 
     // Rewrite Close Event
     void closeEvent(QCloseEvent *);
-    // set Supporting suffix
-    void setSupportSuffix();
-    // get Supporting suffix
-    QString getSupportSuffix();
-    // get Supporting suffix filter
-    QString getSuffixFilter();
+    // check suffix
+    bool checkSuffix(QString);
 
 private:
     Ui::MainWindow *ui;
@@ -44,13 +42,16 @@ private:
     QGraphicsVideoItem * videoItem = nullptr;
     QGraphicsPixmapItem * pixmapItem = nullptr;
     QGraphicsScene * scene = nullptr;
+
     // Suffix supporting
     QVector<QString> lstSuffix;
     // Folder Path choosing, default: C:/Users/xxx
     QString folderPath = QDir::homePath();
-    // Volume setting, default: 10%
-    int currentVolume = 10;
+    // Volume setting, default: 50%
+    int currentVolume = 50;
     bool isMuted = false;
+    // PlayBackRate setting, default: 1.0
+    double currentPBR = 1.0;
 
     /* Private Function */
 
@@ -65,16 +66,16 @@ private:
     void funcConnect();
     // play video/audio
     void openAndPlay(QString);
-    // check suffix
-    bool checkSuffix(QString);
+
+    /* Local Setting & Default Value*/
+    // store default setting when you close the ParodicPlayer
+    void saveDefaultValue();
     // setting both default volume and default path when exec program
     void setDefaultValue();
     // setting default path only
     void setFolderPath(QFileInfo);
 
-    /* Private Slots */
-    // store default setting when you close the ParodicPlayer
-    void saveDefaultValue();
+    /* Progress & Volume */
     // set the playback progress
     void setProgress(qint64);
     // update the slider's displaying

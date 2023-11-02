@@ -1,13 +1,11 @@
 #include "mainwindow.h"
+#include "qgraphicsview.h"
 #include "ui_mainwindow.h"
 void MainWindow::initializePlayer() {
-
-    ui->graphicsView->setGeometry(0,0,482,365);
 
     audioOutput =  new QAudioOutput(this);
     player = new QMediaPlayer(this);
     scene = new QGraphicsScene(this);
-
     ui->graphicsView->setScene(scene);
 
     initializePixmapItem(false);
@@ -19,7 +17,7 @@ void MainWindow::initializePlayer() {
 void MainWindow::initializeVideoItem() {
     scene->clear();
     videoItem = new QGraphicsVideoItem;
-    videoItem->setSize(QSize(ui->graphicsView->width()-2,ui->graphicsView->height()-2));
+    videoItem->setSize(QSize(ui->graphicsView->width(),ui->graphicsView->height()));
     videoItem->setFlags(
         QGraphicsVideoItem::ItemIsMovable
         |QGraphicsPathItem::ItemIsSelectable

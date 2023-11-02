@@ -10,6 +10,15 @@
     <height>500</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>440</width>
+    <height>410</height>
+   </size>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::NoContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>ParodicPlayer</string>
   </property>
@@ -26,12 +35,24 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QGraphicsView" name="graphicsView">
+     <widget class="PPGraphicsView" name="graphicsView">
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="backgroundBrush">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>128</red>
+         <green>128</green>
+         <blue>128</blue>
+        </color>
+       </brush>
+      </property>
+      <property name="interactive">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
@@ -360,6 +381,34 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
            </widget>
           </item>
           <item>
+           <widget class="QDoubleSpinBox" name="spinBox_pbr">
+            <property name="maximumSize">
+             <size>
+              <width>47</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+            <property name="keyboardTracking">
+             <bool>false</bool>
+            </property>
+            <property name="minimum">
+             <double>0.250000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>4.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.250000000000000</double>
+            </property>
+            <property name="value">
+             <double>1.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QTimeEdit" name="timeEdit_position">
             <property name="cursor">
              <cursorShape>ArrowCursor</cursorShape>
@@ -459,6 +508,58 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
             </property>
            </spacer>
           </item>
+          <item>
+           <widget class="QToolButton" name="btn_opendir">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open a Directory as a List&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/res/icon_opendir.png</normaloff>:/res/icon_opendir.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_list">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show List&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/res/icon_list.png</normaloff>:/res/icon_list.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -497,7 +598,38 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
    <addaction name="menu_Format"/>
    <addaction name="menu_FileName"/>
   </widget>
+  <widget class="PlayListDockWidget" name="dockWidget">
+   <property name="minimumSize">
+    <size>
+     <width>75</width>
+     <height>35</height>
+    </size>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>PlayList</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents"/>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PPGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>src/ppgraphicsview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PlayListDockWidget</class>
+   <extends>QDockWidget</extends>
+   <header>src/playlistdockwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../../res.qrc"/>
  </resources>

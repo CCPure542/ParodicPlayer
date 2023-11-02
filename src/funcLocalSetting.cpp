@@ -2,15 +2,22 @@
 #include "ui_mainwindow.h"
 
 void MainWindow::setDefaultValue() {
+
+    /* Assign Default */
     folderPath = QDir::homePath();
-    currentVolume = 10;
+    currentVolume = 50;
     isMuted = false;
+    currentPBR = 1.0;
+
     QString settingFile("Setting.ini");
+
     if(QFile::exists(settingFile)) {
         QFile file(settingFile);
         file.open(QIODevice::ReadOnly);
         QString strPath = QString(file.readLine());
+        strPath.removeLast();
         QString strVolumn = QString(file.readLine());
+        strVolumn.removeLast();
         QString strIsMuted = QString(file.readLine());
         folderPath = strPath;
         currentVolume = strVolumn.toFloat();

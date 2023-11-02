@@ -1,7 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ppgraphicsview.h"
 
 void MainWindow::funcConnect() {
+
+    /* Size changed - GraphicsView */
+    connect(ui->graphicsView,&PPGraphicsView::signalResize,this,[=](){
+        if(videoItem == nullptr) return;
+        videoItem->setSize(QSize(ui->graphicsView->width(),ui->graphicsView->height()));
+        qDebug() << videoItem->boundingRect();
+    });
 
     /* Button - Pause/Play */
     connect(ui->btn_pause,&QToolButton::clicked,this,[=](){
@@ -32,7 +40,6 @@ void MainWindow::funcConnect() {
 
     /* Button - Open File and Ready to play */
     connect(ui->btn_open,&QToolButton::clicked,this,[=](){
-        qDebug() << folderPath;
         QString chooseFilePath = QFileDialog::
             getOpenFileName(this,"Open File",folderPath,getSuffixFilter());
         // Case in which you click cancel
@@ -51,6 +58,23 @@ void MainWindow::funcConnect() {
            audioOutput->setMuted(true);
            isMuted = true;
         }
+    });
+
+    /* Button - Choose folder to set PlayList */
+    connect(ui->btn_opendir,&QToolButton::clicked,ui->dockWidget,[=](){
+        QString chooseFolderPath = QFileDialog::
+            getExistingDirectory(this,"Choose Folder As a Playlist",folderPath);
+        // Case in which you click cancel
+        if(chooseFolderPath.isEmpty()) return;
+        // Sent path to set PlayList
+        folderPath = chooseFolderPath;
+        ui->dockWidget->chooseAndSet(chooseFolderPath);
+    });
+
+    /* Button - Show PlayList */
+    connect(ui->btn_list,&QToolButton::clicked,ui->dockWidget,[=](){
+        if(ui->dockWidget->isHidden()) ui->dockWidget->show();
+        else ui->dockWidget->hide();
     });
 
     /* Slider Progress - when you move it */
@@ -77,6 +101,11 @@ void MainWindow::funcConnect() {
         if(!playing) ui->btn_pause->setIcon(QIcon(":/res/icon_play"));
         else ui->btn_pause->setIcon(QIcon(":/res/icon_pause"));
     });
+
     /* Icon Changing - Sound Button */
     connect(audioOutput,&QAudioOutput::volumeChanged,this,&MainWindow::setSoundIcon);
+
+    /* PlayBackRate */
+    connect(ui->spinBox_pbr,&QDoubleSpinBox::valueChanged,
+        player,&QMediaPlayer::setPlaybackRate);
 }

@@ -15,12 +15,17 @@ SOURCES += \
     src/funcConnect.cpp \
     src/funcInitializePlayer.cpp \
     src/funcLocalSetting.cpp \
-    src/funcSupportSuffix.cpp \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/playlistdockwidget.cpp \
+    src/ppgraphicsview.cpp \
+    src/validsuffix.cpp
 
 HEADERS += \
-    src/mainwindow.h
+    src/mainwindow.h \
+    src/playlistdockwidget.h \
+    src/ppgraphicsview.h \
+    src/validsuffix.h
 
 FORMS += \
     src/form/mainwindow.ui
