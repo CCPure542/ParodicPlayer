@@ -15,5 +15,6 @@
         <file>res/icon_list.png</file>
         <file>res/icon_opendir.png</file>
         <file>res/icon_speed.png</file>
+        <file>res/icon_delete.png</file>
     </qresource>
 </RCC>

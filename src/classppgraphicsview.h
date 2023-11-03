@@ -1,5 +1,5 @@
-#ifndef PPGRAPHICSVIEW_H
-#define PPGRAPHICSVIEW_H
+#ifndef CLASSPPGRAPHICSVIEW_H
+#define CLASSPPGRAPHICSVIEW_H
 
 #include <QGraphicsView>
 
@@ -9,11 +9,11 @@ class PPGraphicsView : public QGraphicsView
 public:
     explicit PPGraphicsView(QWidget *parent = nullptr);
 
-    // Rewrite - used to adjust size
+    /* Rewrite - used to adjust size */
     void resizeEvent(QResizeEvent *);
 
 signals:
     void signalResize();
 };
 
-#endif // PPGRAPHICSVIEW_H
+#endif // CLASSPPGRAPHICSVIEW_H

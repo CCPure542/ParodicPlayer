@@ -1,4 +1,4 @@
-#include "ppgraphicsview.h"
+#include "classppgraphicsview.h"
 
 PPGraphicsView::PPGraphicsView(QWidget *parent)
     : QGraphicsView{parent}
@@ -6,7 +6,8 @@ PPGraphicsView::PPGraphicsView(QWidget *parent)
 
 }
 
-void PPGraphicsView::resizeEvent(QResizeEvent * ev) {
+void PPGraphicsView::resizeEvent(QResizeEvent * ev)
+{
     QGraphicsView::resizeEvent(ev);
     emit signalResize();
 }

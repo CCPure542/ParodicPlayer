@@ -24,18 +24,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-    /* Public Function */
-
-    // Rewrite Close Event
-    void closeEvent(QCloseEvent *);
-    // check suffix
-    bool checkSuffix(QString);
+    void closeEvent(QCloseEvent *);// Rewrite Close Event
+    bool checkSuffix(QString);// check suffix
 
 private:
     Ui::MainWindow *ui;
-
-    /* Private Attributes */
 
     QMediaPlayer * player = nullptr;
     QAudioOutput * audioOutput = nullptr;
@@ -43,48 +36,29 @@ private:
     QGraphicsPixmapItem * pixmapItem = nullptr;
     QGraphicsScene * scene = nullptr;
 
-    // Suffix supporting
-    QVector<QString> lstSuffix;
-    // Folder Path choosing, default: C:/Users/xxx
-    QString folderPath = QDir::homePath();
-    // Volume setting, default: 50%
-    int currentVolume = 50;
+    QVector<QString> lstSuffix;// Suffix supporting
+    QString folderPath = QDir::homePath();// Folder Path choosing, default: C:/Users/xxx
+    int currentVolume = 100;// Volume setting, default: 100%
     bool isMuted = false;
-    // PlayBackRate setting, default: 1.0
-    double currentPBR = 1.0;
+    double currentPBR = 1.0; // PlayBackRate setting, default: 1.0
 
-    /* Private Function */
+    void initializePlayer();// Initialize paramters of player and audioOutput
+    void initializeVideoItem();// Initialize paramters of videoItem
+    void initializePixmapItem(bool);// Initialize paramters of pixmapItem
 
-    // Initialize paramters of player and audioOutput
-    void initializePlayer();
-    // Initialize paramters of videoItem
-    void initializeVideoItem();
-    // Initialize paramters of pixmapItem
-    void initializePixmapItem(bool);
+    void funcConnect();// store all the connect(?) statements
+    void openAndPlay(QString);// play video/audio
 
-    // store all the connect(?) statements
-    void funcConnect();
-    // play video/audio
-    void openAndPlay(QString);
-
-    /* Local Setting & Default Value*/
-    // store default setting when you close the ParodicPlayer
-    void saveDefaultValue();
-    // setting both default volume and default path when exec program
-    void setDefaultValue();
-    // setting default path only
-    void setFolderPath(QFileInfo);
+    /* Local Setting & Default Value */
+    void saveDefaultValue();// store default setting when you close the ParodicPlayer
+    void setDefaultValue();// setting both default volume and default path when exec program
+    void setFolderPath(QFileInfo);// setting default path only
 
     /* Progress & Volume */
-    // set the playback progress
-    void setProgress(qint64);
-    // update the slider's displaying
-    void UpdatePositon(qint64);
-    // set the volume
-    void setVolume(int);
-    // update the volume slider's displaying
-    void UpdatePosVol(int);
-    // set Sound button Icon by the volume
-    void setSoundIcon(float);
+    void setProgress(qint64);// set the playback progress
+    void UpdatePositon(qint64);// update the slider's displaying
+    void setVolume(int);// set the volume
+    void UpdatePosVol(int);// update the volume slider's displaying
+    void setSoundIcon(float);// set Sound button Icon by the volume
 };
 #endif // MAINWINDOW_H

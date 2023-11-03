@@ -12,19 +12,22 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/classitemplay.cpp \
+    src/classplaylistwidget.cpp \
+    src/classppgraphicsview.cpp \
     src/funcConnect.cpp \
     src/funcInitializePlayer.cpp \
     src/funcLocalSetting.cpp \
+    src/funcSlider.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
-    src/playlistdockwidget.cpp \
-    src/ppgraphicsview.cpp \
     src/validsuffix.cpp
 
 HEADERS += \
+    src/classitemplay.h \
+    src/classplaylistwidget.h \
+    src/classppgraphicsview.h \
     src/mainwindow.h \
-    src/playlistdockwidget.h \
-    src/ppgraphicsview.h \
     src/validsuffix.h
 
 FORMS += \

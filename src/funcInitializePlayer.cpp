@@ -1,8 +1,7 @@
 #include "mainwindow.h"
-#include "qgraphicsview.h"
 #include "ui_mainwindow.h"
-void MainWindow::initializePlayer() {
-
+void MainWindow::initializePlayer()
+{
     audioOutput =  new QAudioOutput(this);
     player = new QMediaPlayer(this);
     scene = new QGraphicsScene(this);
@@ -14,7 +13,8 @@ void MainWindow::initializePlayer() {
     player->setAudioOutput(audioOutput);
 }
 
-void MainWindow::initializeVideoItem() {
+void MainWindow::initializeVideoItem()
+{
     scene->clear();
     videoItem = new QGraphicsVideoItem;
     videoItem->setSize(QSize(ui->graphicsView->width(),ui->graphicsView->height()));
@@ -26,7 +26,8 @@ void MainWindow::initializeVideoItem() {
     player->setVideoOutput(videoItem);
 }
 
-void MainWindow::initializePixmapItem(bool flag) {
+void MainWindow::initializePixmapItem(bool flag)
+{
     scene->clear();
     pixmapItem = new QGraphicsPixmapItem;
     if(flag) pixmapItem->setPixmap(QPixmap(":/res/audioplay.png"));
