@@ -2,8 +2,8 @@
 #include "ui_mainwindow.h"
 #include "classppgraphicsview.h"
 
-void MainWindow::funcConnect() {
-
+void MainWindow::funcConnect()
+{
     /* Size changed - GraphicsView */
     connect(ui->graphicsView,&PPGraphicsView::signalResize,this,[=]()
     {
@@ -43,14 +43,16 @@ void MainWindow::funcConnect() {
         setProgress(player->position()/1000-5);
     });
 
-    /* Button - Open File and Ready to play */
-    connect(ui->btn_open,&QToolButton::clicked,this,[=]()
+    /* Button - Open one or multi files to play and add to PlayList */
+    connect(ui->btn_open,&QToolButton::clicked,ui->dockWidget,[=]()
     {
-        QString chooseFilePath = QFileDialog::
-            getOpenFileName(this,"Open File",folderPath,getSuffixFilter());
-        if(chooseFilePath.isEmpty()) return;// Case in which you click cancel
-        setFolderPath(QFileInfo(chooseFilePath));// update default path
-        openAndPlay(chooseFilePath);// Sent path to open
+        QStringList chooseFilesPath = QFileDialog::
+            getOpenFileNames(this,"Open File",folderPath,getSuffixFilter());
+        if(chooseFilesPath.isEmpty()) return;// Case in which you click cancel
+        QFileInfo info(chooseFilesPath.at(0));
+        setFolderPath(info);// update default path
+        openAndPlay(info.filePath());// Sent the first path to open
+        ui->listWidget->chooseAndSet(chooseFilesPath);// Sent all path to set PlayList
     });
 
     /* Button - Mute and Unmute */
@@ -66,22 +68,24 @@ void MainWindow::funcConnect() {
         }
     });
 
-    /* Button - Choose folder to set PlayList */
-    connect(ui->btn_openmult,&QToolButton::clicked,ui->dockWidget,[=]()
-    {
-        QStringList chooseFilesPath = QFileDialog::
-            getOpenFileNames(this,"Open File",folderPath,getSuffixFilter());
-        if(chooseFilesPath.isEmpty()) return;// Case in which you click cancel
-        setFolderPath(QFileInfo(chooseFilesPath.at(0)));// update default path
-        ui->listWidget->chooseAndSet(chooseFilesPath);// Sent path to set PlayList
-    });
-
     /* Button - Show PlayList */
     connect(ui->btn_list,&QToolButton::clicked,ui->dockWidget,[=]()
     {
         if(ui->dockWidget->isHidden()) ui->dockWidget->show();
         else ui->dockWidget->hide();
     });
+
+    /* ListWidget - Double Click in playlist */
+    connect(ui->listWidget,&PlayListWidget::signalLoadSource,this,[=](QFileInfo info)
+    {
+        qDebug() << info.fileName();
+        qDebug() << info.filePath();
+        qDebug() << info.path();
+        openAndPlay(info.filePath());
+    });
+
+    /* Button - delete item in PlayList */
+    connect(ui->btn_delete,&QToolButton::clicked,ui->listWidget,&PlayListWidget::chooseAndDelete);
 
     /* Slider Progress - when you move it */
     connect(ui->slider_progress,&QSlider::sliderMoved,this,&MainWindow::setProgress);

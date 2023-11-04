@@ -15,6 +15,16 @@ void MainWindow::initializePlayer()
 
 void MainWindow::initializeVideoItem()
 {
+    if(videoItem!=nullptr)
+    {
+        delete videoItem;
+        videoItem = nullptr;
+    }
+    if(pixmapItem!=nullptr)
+    {
+        delete pixmapItem;
+        pixmapItem = nullptr;
+    }
     scene->clear();
     videoItem = new QGraphicsVideoItem;
     videoItem->setSize(QSize(ui->graphicsView->width(),ui->graphicsView->height()));
@@ -28,6 +38,16 @@ void MainWindow::initializeVideoItem()
 
 void MainWindow::initializePixmapItem(bool flag)
 {
+    if(videoItem!=nullptr)
+    {
+        delete videoItem;
+        videoItem = nullptr;
+    }
+    if(pixmapItem!=nullptr)
+    {
+        delete pixmapItem;
+        pixmapItem = nullptr;
+    }
     scene->clear();
     pixmapItem = new QGraphicsPixmapItem;
     if(flag) pixmapItem->setPixmap(QPixmap(":/res/audioplay.png"));

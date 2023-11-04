@@ -14,28 +14,36 @@ void PlayListWidget::chooseAndSet(QStringList path)
         /* check if there is a same path in the list */
         auto temp = std::find_if(playlist.begin(),playlist.end(),
             [&](const ItemPlay * bp){return(bp->getFileInfo().filePath()
-                ==item->getFileInfo().filePath());});
+                ==item->getFileInfo().filePath());});// search
         if (temp!=playlist.end())
         {
-            delete item; // found same path so delete
+            delete item; // found resipitive path so delete
             continue;
         }
         else
         {
             playlist.push_back(item); // add
+            this->addItem(item);
         }
     }
-    connect(this,&PlayListWidget::itemDoubleClicked,this,[=](ItemPlay * item)
+
+    connect(this,&QListWidget::itemDoubleClicked,this,[=](QListWidgetItem * item_para)
     {
+        ItemPlay * item = dynamic_cast<ItemPlay *>(item_para);
+        qDebug() << this->indexFromItem(item);
         emit signalLoadSource(item->getFileInfo());
-    }); // activate connect
-    qDebug() << lst.count();
+    }); // activate connect for my custom doubleClicked signal
 }
 
-void PlayListWidget::chooseAndDelete() {
+void PlayListWidget::chooseAndDelete()
+{
+    /* choose from list */
     if(this->currentItem()==nullptr) return;
     else
     {
+        /* Remove element from list<?> - Standard method */
+        playlist.erase(std::remove(playlist.begin(), playlist.end(), this->currentItem()), playlist.end());
+        /* delete after remove */
         delete this->currentItem();
     }
 }

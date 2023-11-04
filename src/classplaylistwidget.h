@@ -23,8 +23,6 @@ private:
 signals:
     /* sent to mainWindow and play */
     void signalLoadSource(QFileInfo);
-    /* overload for type compatible */
-    void itemDoubleClicked(ItemPlay *);
 };
 
 #endif // CLASSPLAYLISTWIDGET_H

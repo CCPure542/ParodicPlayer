@@ -15,6 +15,7 @@ SOURCES += \
     src/classitemplay.cpp \
     src/classplaylistwidget.cpp \
     src/classppgraphicsview.cpp \
+    src/funKeyEvent.cpp \
     src/funcConnect.cpp \
     src/funcInitializePlayer.cpp \
     src/funcLocalSetting.cpp \

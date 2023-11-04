@@ -11,7 +11,16 @@ MainWindow::MainWindow(QWidget *parent)
     this->resize(rect.size());
     this->resize(QSize(width()*0.75,height()*0.75));
     ui->dockWidget->hide();
-
+    /* Initialize member */
+    player = nullptr;
+    audioOutput = nullptr;
+    videoItem = nullptr;
+    pixmapItem = nullptr;
+    scene = nullptr;
+    folderPath = QDir::homePath();
+    currentVolume = 100;
+    isMuted = false;
+    currentPBR = 1.0;
     /* Supporting suffix */
     setSupportSuffix(lstSuffix);
     /* Initialize paramters of player */
@@ -20,11 +29,6 @@ MainWindow::MainWindow(QWidget *parent)
     setDefaultValue();
     /* Activate signals/slots */
     funcConnect();
-}
-
-void MainWindow::closeEvent(QCloseEvent *)
-{
-    saveDefaultValue();
 }
 
 void MainWindow::openAndPlay(QString chooseFilePath)
@@ -63,8 +67,43 @@ bool MainWindow::checkSuffix(QString chooseSuffix)
     }
 }
 
+void MainWindow::closeEvent(QCloseEvent * ev)
+{
+    saveDefaultValue();
+    QWidget::closeEvent(ev);
+}
+
 MainWindow::~MainWindow()
 {
+    if(player!=nullptr)
+    {
+        player->stop();
+        delete player;
+        qDebug() << "delete 1";
+    }
+    if(audioOutput!=nullptr)
+    {
+        delete audioOutput;
+        qDebug() << "delete 2";
+    }
+
+    if(videoItem!=nullptr)
+    {
+        delete videoItem;
+        qDebug() << "delete 3";
+    }
+    qDebug() << pixmapItem;
+    if(pixmapItem!=nullptr)
+    {
+        delete pixmapItem;
+        qDebug() << "delete 4";
+    }
+    if(scene!=nullptr)
+    {
+        scene->clear();
+        delete scene;
+        qDebug() << "delete 5";
+    }
     delete ui;
-    scene->clear();
+    qDebug() << "delete 6";
 }

@@ -25,22 +25,23 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void closeEvent(QCloseEvent *);// Rewrite Close Event
+    void keyPressEvent(QKeyEvent *);// Rewrite Key Press Event
     bool checkSuffix(QString);// check suffix
 
 private:
     Ui::MainWindow *ui;
 
-    QMediaPlayer * player = nullptr;
-    QAudioOutput * audioOutput = nullptr;
-    QGraphicsVideoItem * videoItem = nullptr;
-    QGraphicsPixmapItem * pixmapItem = nullptr;
-    QGraphicsScene * scene = nullptr;
+    QMediaPlayer * player;
+    QAudioOutput * audioOutput;
+    QGraphicsVideoItem * videoItem;
+    QGraphicsPixmapItem * pixmapItem;
+    QGraphicsScene * scene;
 
     QVector<QString> lstSuffix;// Suffix supporting
-    QString folderPath = QDir::homePath();// Folder Path choosing, default: C:/Users/xxx
-    int currentVolume = 100;// Volume setting, default: 100%
-    bool isMuted = false;
-    double currentPBR = 1.0; // PlayBackRate setting, default: 1.0
+    QString folderPath;// Folder Path choosing, default: C:/Users/xxx
+    int currentVolume;// Volume setting, default: 100%
+    bool isMuted;
+    double currentPBR; // PlayBackRate setting, default: 1.0
 
     void initializePlayer();// Initialize paramters of player and audioOutput
     void initializeVideoItem();// Initialize paramters of videoItem

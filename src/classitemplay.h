@@ -10,6 +10,7 @@ class ItemPlay : public QListWidgetItem
 public:
     /* QFileInfo is needed */
     explicit ItemPlay(QFileInfo fileInfo,QListWidget *parent = nullptr);
+    ~ItemPlay();
     /* get file info */
     const QFileInfo & getFileInfo() const;
 private:
