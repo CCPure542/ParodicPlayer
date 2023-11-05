@@ -3,7 +3,7 @@
 
 void MainWindow::setDefaultValue()
 {
-    /* Assign Default */
+    /* Default Assign */
     folderPath = QDir::homePath();
     currentVolume = 100;
     isMuted = false;
