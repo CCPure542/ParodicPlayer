@@ -14,5 +14,5 @@ const QFileInfo & ItemPlay::getFileInfo() const
 
 ItemPlay::~ItemPlay()
 {
-    qDebug() << "destructor_ItemPlay";
+    qDebug() << "Destructor_ItemPlay";
 }

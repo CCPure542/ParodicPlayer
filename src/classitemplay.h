@@ -11,7 +11,7 @@ public:
     /* QFileInfo is needed */
     explicit ItemPlay(QFileInfo fileInfo,QListWidget *parent = nullptr);
     ~ItemPlay();
-    /* get file info */
+    /* Get file info */
     const QFileInfo & getFileInfo() const;
 private:
     /* Main Attribute */
