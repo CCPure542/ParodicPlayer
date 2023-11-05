@@ -29,6 +29,11 @@ PlayListWidget::PlayListWidget(QWidget *parent)
     });
 }
 
+void PlayListWidget::keyPressEvent(QKeyEvent * ev)
+{
+    parent()->parent()->event((QEvent *)ev);
+}
+
 void PlayListWidget::chooseAndSet(QStringList path)
 {
     QList<QString> lst = path.toList();

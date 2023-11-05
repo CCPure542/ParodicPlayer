@@ -12,6 +12,8 @@ class PlayListWidget : public QListWidget
 public:
     explicit PlayListWidget(QWidget *parent = nullptr);
     ~PlayListWidget();
+    /* Rewrite - handling key event is not permitted */
+    void keyPressEvent(QKeyEvent *);
     /* Function for receive paths to set list */
     void chooseAndSet(QStringList);
     /* Function as slot for delete */
