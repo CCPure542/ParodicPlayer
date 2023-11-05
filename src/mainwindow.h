@@ -5,7 +5,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QScreen>
-
+#include <QDebug>
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include <QGraphicsScene>
