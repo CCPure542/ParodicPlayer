@@ -1,5 +1,5 @@
 #include "validsuffix.h"
-
+//
 void setSupportSuffix(QVector<QString> & vec) {
     vec.reserve(64);
     vec.push_back("avi");
