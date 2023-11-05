@@ -16,5 +16,6 @@
         <file>res/icon_opendir.png</file>
         <file>res/icon_speed.png</file>
         <file>res/icon_delete.png</file>
+        <file>res/icon_fullscreen.png</file>
     </qresource>
 </RCC>
