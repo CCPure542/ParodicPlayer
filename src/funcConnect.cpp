@@ -30,28 +30,28 @@ void MainWindow::funcConnect()
         player->stop();
     });
 
-    /* LeftMouse Button - Forward/Next */
+    /* LeftMouse Button - Forward */
     connect(ui->btn_next,&QToolButton::clicked,this,[=]()
     {
         setProgress(player->position()/1000+5);
     });
 
-    /* LeftMouse Button - Back/Previous */
+    /* LeftMouse Button - Back */
     connect(ui->btn_pre,&QToolButton::clicked,this,[=]()
     {
         setProgress(player->position()/1000-5);
     });
 
-    /* RightMouse Button - Forward/Next */
-    connect(ui->btn_next,&QToolButton::clicked,this,[=]()
+    /* RightMouse Button - Next */
+    connect(ui->btn_next,&ButtonMouseR::signalListJumpPlay,this,[=]()
     {
-        setProgress(player->position()/1000+5);
+        emit ui->listWidget->signalJumpPlay(true);
     });
 
-    /* RightMouse Button - Back/Previous */
-    connect(ui->btn_pre,&QToolButton::clicked,this,[=]()
+    /* RightMouse Button - Previous */
+    connect(ui->btn_pre,&ButtonMouseR::signalListJumpPlay,this,[=]()
     {
-        setProgress(player->position()/1000-5);
+        emit ui->listWidget->signalJumpPlay(false);
     });
 
     /* Button - Open one or multi files to play and add to PlayList */
@@ -104,8 +104,11 @@ void MainWindow::funcConnect()
     /* Slider Progress - when video is playing */
     connect(player,&QMediaPlayer::positionChanged,this,&MainWindow::UpdatePositon);
 
-    /* Slider Volume */
+    /* Slider Volume from Mouse */
     connect(ui->slider_volume,&QSlider::sliderMoved,this,&MainWindow::setVolume);
+
+    /* Slider Volume from Hotkey */
+    connect(ui->slider_volume,&QSlider::valueChanged,ui->slider_volume,&QSlider::sliderMoved);
 
     /* Icon Changing - Sound Button */
     connect(audioOutput,&QAudioOutput::mutedChanged,ui->btn_sound,[=](bool isMuted)
