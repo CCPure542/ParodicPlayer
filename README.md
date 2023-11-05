@@ -43,7 +43,7 @@ Qt Version: **Qt 6.5.2** & **MinGW 11.2.0 64-bit**
 
 #### Program Interface
 
-![image](/ParodicPlayer_interface.png)
+![](res/ParodicPlayer_interface.png)
 
 #### Hotkeys 
 
