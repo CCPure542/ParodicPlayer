@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+//s
 void MainWindow::setProgress(qint64 pos)
 {
     player->setPosition(pos*1000);
