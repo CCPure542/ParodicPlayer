@@ -12,7 +12,7 @@ class PlayListWidget : public QListWidget
 public:
     explicit PlayListWidget(QWidget *parent = nullptr);
     ~PlayListWidget();
-    /* Function for receive path to set list */
+    /* Function for receive paths to set list */
     void chooseAndSet(QStringList);
     /* Function as slot for delete */
     void chooseAndDelete();
