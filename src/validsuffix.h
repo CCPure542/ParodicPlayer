@@ -5,7 +5,7 @@
 
 #include<QString>
 #include<QVector>
-//
+
 /* help mainWindow to put Supporting Suffix into vector */
 void setSupportSuffix(QVector<QString> &);
 /* get Supporting suffix */
