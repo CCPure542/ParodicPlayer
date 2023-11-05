@@ -27,12 +27,12 @@ void MainWindow::initializeVideoItem()
     }
     scene->clear();
     videoItem = new QGraphicsVideoItem;
-    videoItem->setSize(QSize(ui->graphicsView->width(),ui->graphicsView->height()));
     videoItem->setFlags(
         QGraphicsVideoItem::ItemIsMovable
         |QGraphicsPathItem::ItemIsSelectable
         |QGraphicsItem::ItemIsFocusable);
     scene->addItem(videoItem);
+    videoItem->setSize(QSize(ui->graphicsView->width(),ui->graphicsView->height()));
     player->setVideoOutput(videoItem);
 }
 
