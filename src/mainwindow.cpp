@@ -6,11 +6,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->graphicsView->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     QScreen * screen = QGuiApplication::primaryScreen();
     QRect rect = screen->availableGeometry();
     this->resize(rect.size());
     this->resize(QSize(width()*0.75,height()*0.75));
-    ui->dockWidget->hide();
     /* Initialize member */
     player = nullptr;
     audioOutput = nullptr;
