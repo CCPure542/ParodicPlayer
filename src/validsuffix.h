@@ -14,3 +14,5 @@ QString getSupportSuffix(QVector<QString> &);
 QString getSuffixFilter();
 /* similar with previous but used in choosing folder */
 QStringList getSuffixFilterDir();
+/* Used to avoid setting cover (Recognized as video) if a audio file contains cover  */
+bool isAudioSuffix(QString);

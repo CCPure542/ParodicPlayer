@@ -294,7 +294,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="btn_pre">
+           <widget class="ButtonMouseR" name="btn_pre">
             <property name="maximumSize">
              <size>
               <width>35</width>
@@ -323,7 +323,7 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="btn_next">
+           <widget class="ButtonMouseR" name="btn_next">
             <property name="maximumSize">
              <size>
               <width>35</width>
@@ -620,6 +620,11 @@ QSlider::handle:horizontal{background:qradialgradient(spread:pad,cx:0.5,cy:0.5,r
    <class>PlayListWidget</class>
    <extends>QListWidget</extends>
    <header>src/classplaylistwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ButtonMouseR</class>
+   <extends>QToolButton</extends>
+   <header>src/classbuttonmouser.h</header>
   </customwidget>
  </customwidgets>
  <resources>

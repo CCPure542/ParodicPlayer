@@ -45,7 +45,7 @@ void MainWindow::openAndPlay(QString chooseFilePath)
     ui->menu_Format->setTitle(fileInfo.suffix());
     ui->timeEdit_duration->setTime(QTime(0,0,0,0).addMSecs(player->duration()));
     /* Displaying Policy according the file type */
-    if(player->hasVideo()) {
+    if(player->hasVideo() && !isAudioSuffix(fileInfo.suffix())) {
         initializeVideoItem();
     } else {
         initializePixmapItem(true);
@@ -92,7 +92,7 @@ MainWindow::~MainWindow()
         delete videoItem;
         qDebug() << "delete 3";
     }
-    qDebug() << pixmapItem;
+
     if(pixmapItem!=nullptr)
     {
         delete pixmapItem;

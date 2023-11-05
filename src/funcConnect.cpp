@@ -9,7 +9,6 @@ void MainWindow::funcConnect()
     {
         if(videoItem == nullptr) return;
         videoItem->setSize(QSize(ui->graphicsView->width(),ui->graphicsView->height()));
-        qDebug() << videoItem->boundingRect();
     });
 
     /* Button - Pause/Play */
@@ -31,13 +30,25 @@ void MainWindow::funcConnect()
         player->stop();
     });
 
-    /* Button - Forward/Next */
+    /* LeftMouse Button - Forward/Next */
     connect(ui->btn_next,&QToolButton::clicked,this,[=]()
     {
         setProgress(player->position()/1000+5);
     });
 
-    /* Button - Back/Previous */
+    /* LeftMouse Button - Back/Previous */
+    connect(ui->btn_pre,&QToolButton::clicked,this,[=]()
+    {
+        setProgress(player->position()/1000-5);
+    });
+
+    /* RightMouse Button - Forward/Next */
+    connect(ui->btn_next,&QToolButton::clicked,this,[=]()
+    {
+        setProgress(player->position()/1000+5);
+    });
+
+    /* RightMouse Button - Back/Previous */
     connect(ui->btn_pre,&QToolButton::clicked,this,[=]()
     {
         setProgress(player->position()/1000-5);

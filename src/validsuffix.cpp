@@ -79,3 +79,11 @@ QStringList getSuffixFilterDir() {
     filter.append ("*.wma");
     return(filter);
 }
+
+bool isAudioSuffix(QString suf)
+{
+    suf = suf.toLower();
+    bool re = (suf == "aac" || suf == "ape" || suf == "amr" || suf == "flac"
+        || suf == "midi" || suf == "mp3" || suf == "m4a" || suf == "wav" || suf == "wma");
+    return(re);
+}
