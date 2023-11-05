@@ -23,6 +23,8 @@ private:
 signals:
     /* sent to mainWindow and play */
     void signalLoadSource(QFileInfo);
+    /* Receive jumping order */
+    void signalJumpPlay(bool);
 };
 
 #endif // CLASSPLAYLISTWIDGET_H
