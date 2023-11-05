@@ -11,7 +11,7 @@ public:
 
     /* Rewrite - used to adjust size */
     void resizeEvent(QResizeEvent *);
-    /* Rewrite - handle key event is not permitted */
+    /* Rewrite - handling key event is not permitted */
     void keyPressEvent(QKeyEvent *);
 
 signals:
