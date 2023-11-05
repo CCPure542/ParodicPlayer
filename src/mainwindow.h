@@ -26,6 +26,8 @@ public:
     ~MainWindow();
     void closeEvent(QCloseEvent *);// Rewrite Close Event
     void keyPressEvent(QKeyEvent *);// Rewrite Key Press Event
+    void dragEnterEvent(QDragEnterEvent *);// Rewrite drag Enter Event
+    void dropEvent(QDropEvent *);// Rewrite drop Event
     bool checkSuffix(QString);// check suffix
 
 private:
