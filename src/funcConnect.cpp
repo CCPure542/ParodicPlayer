@@ -66,6 +66,17 @@ void MainWindow::funcConnect()
         ui->listWidget->chooseAndSet(chooseFilesPath);// Sent all path to set PlayList
     });
 
+    /* Drag Files - Open one or multi files to play and add to PlayList */
+    connect(this,&MainWindow::filesDropped,ui->dockWidget,[=](QStringList paths)
+    {
+        QStringList chooseFilesPath = paths;
+        if(chooseFilesPath.isEmpty()) return;// Case in which you click cancel
+        QFileInfo info(chooseFilesPath.at(0));
+        setFolderPath(info);// update default path
+        openAndPlay(info.filePath());// Sent the first path to open
+        ui->listWidget->chooseAndSet(chooseFilesPath);// Sent all path to set PlayList
+    });
+
     /* Button - Mute and Unmute */
     connect(ui->btn_sound,&QToolButton::clicked,this,[=]()
     {
