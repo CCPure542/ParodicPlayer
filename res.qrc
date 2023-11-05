@@ -17,5 +17,6 @@
         <file>res/icon_speed.png</file>
         <file>res/icon_delete.png</file>
         <file>res/icon_fullscreen.png</file>
+        <file>res/ParodicPlayer_interface.png</file>
     </qresource>
 </RCC>
