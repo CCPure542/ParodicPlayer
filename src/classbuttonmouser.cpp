@@ -10,7 +10,7 @@ void ButtonMouseR::mousePressEvent(QMouseEvent * ev)
 {
     if(ev->buttons() & Qt::RightButton)
     {
-        emit signalListJump();
+        emit signalListJumpPlay();
     }
     else
     {

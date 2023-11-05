@@ -13,7 +13,7 @@ public:
     void mousePressEvent(QMouseEvent *);
 signals:
     /* jump to next or previous one in the list */
-    void signalListJump();
+    void signalListJumpPlay();
 };
 
 #endif // BUTTONMOUSER_H
