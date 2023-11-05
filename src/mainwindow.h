@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QScreen>
+#include <QMimeData>
 
 #include <QMediaPlayer>
 #include <QAudioOutput>
@@ -63,5 +64,7 @@ private:
     void setVolume(int);// set the volume
     void UpdatePosVol(int);// update the volume slider's displaying
     void setSoundIcon(float);// set Sound button Icon by the volume
+signals:
+    void filesDropped(QStringList);// signals that widget receive dropping
 };
 #endif // MAINWINDOW_H
